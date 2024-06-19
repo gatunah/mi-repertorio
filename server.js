@@ -28,7 +28,10 @@ app.get("/canciones", async (req, res) => {
     //console.log(result);
     res.json(result);
   } catch {
-    res.status(500).send("Algo salio mal :(");
+    console.error("Error al obtener getData", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Error interno al obtener getData" });
   }
 });
 
@@ -41,7 +44,10 @@ app.post("/cancion", async (req, res) => {
     //console.log(respuesta);
     //console.log(datos);
   } catch {
-    res.status(500).send("Algo salio mal :(");
+    console.error("Error al insertar la canción:", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Error interno al insertar la canción" });
   }
 });
 
