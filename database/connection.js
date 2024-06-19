@@ -7,6 +7,9 @@ const pool = new Pool({
   database: "repertorio",
   password: "admin",
   port: 5432,
+  max: 20,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 2000,
 });
 //TODOS LOS DATOS
 const getData = async () => {
@@ -15,8 +18,8 @@ const getData = async () => {
       "SELECT id, titulo, artista, tono FROM canciones ORDER BY id ASC"
     );
     return result;
-  } catch {
-    console.log("Ups, algo salió mal");
+  } catch (error) {
+    console.error("Error al obtener getData:", error);
   }
 };
 //INSERTAR

@@ -8,15 +8,6 @@ app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
 
-const { Pool } = require("pg");
-// CONFIG BD
-const config = {
-  user: "postgres",
-  host: "localhost",
-  database: "repertorio",
-  password: "admin",
-  port: 5432,
-};
 
 app.use(express.json());//PARA ACCEDER A req.body
 
@@ -33,7 +24,6 @@ app.get("/", async (req, res) => {
 //COMPLETAR DATOS
 app.get("/canciones", async (req, res) => {
   try {
-    const pool = new Pool(config);
     const result = await getData();
     //console.log(result);
     res.json(result);
