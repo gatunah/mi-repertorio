@@ -25,7 +25,7 @@ app.get("/", async (req, res) => {
 app.get("/canciones", async (req, res) => {
   try {
     const result = await getData();
-    //console.log(result);
+    console.log(result);
     res.json(result);//DEVUELVE JSON
   } catch (error) {
     console.error("Error al obtener getData", error);
@@ -43,7 +43,7 @@ app.post("/cancion", async (req, res) => {
     res.json(respuesta);
     //console.log(respuesta);
     //console.log(datos);
-  } catch {
+  } catch (error){
     console.error("Error al insertar la canción:", error);
     res
       .status(500)
@@ -68,7 +68,7 @@ app.put("/cancion/:id", async (req, res) => {
     const resultado = await editar(datosCompletos);
     //console.log(resultado);
     res.status(200).json({ success: true, message: "Canción agregada" });
-  } catch {
+  } catch (error){
     console.error("Error al editar la canción:", error);
     res
       .status(500)
@@ -83,7 +83,7 @@ app.delete("/cancion", async (req, res) => {
   console.log(id);
   const resultado = await eliminar(id);
   res.status(200).json({ success: true, message: "Canción eliminada" });
-  }catch{
+  }catch (error){
     console.error("Error al eliminar la canción:", error);
     res
       .status(500)

@@ -15,7 +15,7 @@ const getData = async () => {
     const result = await pool.query(
       "SELECT id, titulo, artista, tono FROM canciones ORDER BY id ASC"
     );
-    return result;
+    return result.rows;
   } catch (error) {
     console.error("Error al obtener getData:", error);
   }

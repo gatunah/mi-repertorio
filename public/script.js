@@ -8,9 +8,10 @@ let tono = document.getElementById("tono");
 let canciones = [];
 window.onload = getData();
 //MOSTRAR DATOS TABLA
+
 async function getData() {
   await axios.get(url + "es").then((data) => {
-    canciones = data.data.rows;//SE AGREGA ROWS 
+    canciones = data.data;//SE AGREGA ROWS 
     tbody.innerHTML = "";
     //console.log(canciones)
     canciones.forEach((c, i) => {
