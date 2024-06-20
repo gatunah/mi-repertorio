@@ -2,7 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const { getData, insertar, editar, eliminar } = require("./database/connection");
 const app = express();
-const port = 3002;
+const port = 3003;
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
@@ -26,8 +26,8 @@ app.get("/canciones", async (req, res) => {
   try {
     const result = await getData();
     //console.log(result);
-    res.json(result);
-  } catch {
+    res.json(result);//DEVUELVE JSON
+  } catch (error) {
     console.error("Error al obtener getData", error);
     res
       .status(500)
